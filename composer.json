@@ -13,6 +13,8 @@
         "filament/filament": "^3.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "milon/barcode": "^11.0",
+        "spatie/laravel-model-states": "^2.7",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {
