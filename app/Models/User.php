@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -44,5 +46,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getRoleAttribute()
+    {
+        return $this->getRoleNames()->first();
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
     }
 }
