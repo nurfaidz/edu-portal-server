@@ -4,13 +4,15 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Enums\Roles\Role;
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable, HasRoles, Notifiable;
 
@@ -57,4 +59,23 @@ class User extends Authenticatable
     {
         return true;
     }
+
+    /**
+     * Scope
+     */
+
+    public function scopeSuperadmin()
+    {
+        return $this->role(Role::Superadmin->value, 'superadmin');
+    }
+
+    // Admin
+
+    // Lecturer
+    public function scopeLecturer()
+    {
+        return $this->role(Role::Lecturer->value, 'lecturer');
+    }
+
+    // Student
 }
