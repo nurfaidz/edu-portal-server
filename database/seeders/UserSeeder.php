@@ -24,7 +24,31 @@ class UserSeeder extends Seeder
         $superadmin->assignRole($roleSuperadmin);
 
         // Admin
+        $admin = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'adminExample@gmail.com',
+        ]);
+
+        $roleAdmin = Role::where('name', RolesRole::Admin->value)->first();
+        $admin->assignRole($roleAdmin);
+
+
         // Lecturer
+        $lecturer = User::factory()->create([
+            'name' => 'Lecturer',
+            'email' => 'LecturerExample@gmail.com',
+        ]);
+
+        $roleLecturer = Role::where('name', RolesRole::Lecturer->value)->first();
+        $lecturer->assignRole($roleLecturer);
+
         // Student
+        $student = User::factory()->create([
+            'name' => 'Student',
+            'email' => 'StudentExample@gmail.com',
+        ]);
+
+        $roleStudent = Role::where('name', RolesRole::Student->value)->first();
+        $student->assignRole($roleStudent);
     }
 }

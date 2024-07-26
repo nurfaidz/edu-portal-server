@@ -18,6 +18,10 @@ class RoleSeeder extends Seeder
         ]);
 
         // Admin
+        \Spatie\Permission\Models\Role::firstOrCreate([
+            'name' => \App\Enums\Roles\Role::Admin->value,
+            'guard_name' => 'admin',
+        ]);
 
         // Lecturer
         \Spatie\Permission\Models\Role::firstOrCreate([
@@ -26,5 +30,9 @@ class RoleSeeder extends Seeder
         ]);
 
         // Student
+        \Spatie\Permission\Models\Role::firstOrCreate([
+            'name' => \App\Enums\Roles\Role::Student->value,
+            'guard_name' => 'student',
+        ]);
     }
 }

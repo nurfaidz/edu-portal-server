@@ -70,6 +70,9 @@ class User extends Authenticatable implements FilamentUser
     }
 
     // Admin
+    public function scopeAdmin(){
+        return $this->role(Role::Admin->value, 'admin');
+    }
 
     // Lecturer
     public function scopeLecturer()
@@ -78,4 +81,10 @@ class User extends Authenticatable implements FilamentUser
     }
 
     // Student
+    public function scopeStudent()
+    {
+        return $this->role(Role::Student->value, 'student');
+    }
+
+
 }
