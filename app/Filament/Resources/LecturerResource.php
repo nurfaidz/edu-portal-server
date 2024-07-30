@@ -26,7 +26,21 @@ class LecturerResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Informasi Dosen')
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nama')
+                            ->required(),
+                        Forms\Components\TextInput::make('email')
+                            ->label('Email')
+                            ->required(),
+                        Forms\Components\TextInput::make('password')
+                            ->label('Password')
+                            ->password()
+                            ->visible(fn ($livewire) => $livewire instanceof Pages\CreateLecturer)
+                            ->required(),
+                    ])
             ]);
     }
 
@@ -35,7 +49,11 @@ class LecturerResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                ->label('Nama'),
+                ->label('Nama')
+                ->searchable(),
+                TextColumn::make('email')
+                ->label('Email')
+                ->searchable(),
             ])
             ->filters([
                 //
@@ -45,16 +63,14 @@ class LecturerResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
-                //     Tables\Actions\DeleteBulkAction::make(),
-                // ]),
+                //
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\LecturerCoursesRelationManager::class,
         ];
     }
 
@@ -70,6 +86,6 @@ class LecturerResource extends Resource
 
     public static function getEloquentQuery(): Builder
 {
-    return parent::getEloquentQuery()->Superadmin();
+    return parent::getEloquentQuery()->lecturer();
 }
 }
