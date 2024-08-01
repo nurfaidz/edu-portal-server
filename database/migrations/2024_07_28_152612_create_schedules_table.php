@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\LecturerCourse::class)->index();
+            $table->string('classroom');
             $table->date('date');
             $table->time('start');
             $table->time('end');

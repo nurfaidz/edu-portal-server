@@ -33,23 +33,11 @@ class LecturerCoursesRelationManager extends RelationManager
                             ->required(),
                         Forms\Components\Select::make('classroom')
                             ->label('Ruang Kelas')
-                            ->options([
-                                \App\Enums\Courses\Classroom::A->value => \App\Enums\Courses\Classroom::A->value,
-                                \App\Enums\Courses\Classroom::B->value => \App\Enums\Courses\Classroom::B->value,
-                            ])
+                            ->options(\App\Enums\Courses\Classroom::options())
                             ->required(),
                         Forms\Components\Select::make('semester')
                             ->label('Semester')
-                            ->options([
-                                \App\Enums\Courses\Semester::One->value => \App\Enums\Courses\Semester::One->value,
-                                \App\Enums\Courses\Semester::Two->value => \App\Enums\Courses\Semester::Two->value,
-                                \App\Enums\Courses\Semester::Three->value   => \App\Enums\Courses\Semester::Three->value,
-                                \App\Enums\Courses\Semester::Four->value    => \App\Enums\Courses\Semester::Four->value,
-                                \App\Enums\Courses\Semester::Five->value    => \App\Enums\Courses\Semester::Five->value,
-                                \App\Enums\Courses\Semester::Six->value     => \App\Enums\Courses\Semester::Six->value,
-                                \App\Enums\Courses\Semester::Seven->value   => \App\Enums\Courses\Semester::Seven->value,
-                                \App\Enums\Courses\Semester::Eight->value   => \App\Enums\Courses\Semester::Eight->value,
-                            ])
+                            ->options(\App\Enums\Courses\Semester::options())
                             ->required(),
                         Forms\Components\TextInput::make('year')
                             ->label('Tahun')

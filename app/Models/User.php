@@ -93,4 +93,11 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(LecturerCourse::class, 'user_id');
     }
+
+    public function schedules()
+    {
+        return $this->lecturerCourses()->map(function ($lecturerCourse) {
+            return $lecturerCourse->schedules;
+        })->flatten();
+    }
 }

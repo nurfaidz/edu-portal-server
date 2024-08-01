@@ -4,6 +4,8 @@ namespace App\Filament\Resources\LecturerResource\Pages;
 
 use App\Filament\Resources\LecturerResource;
 use Filament\Actions;
+use Filament\Infolists\Infolist;
+use Filament\Infolists;
 use Filament\Resources\Pages\ViewRecord;
 
 class ViewLecturer extends ViewRecord

@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->index();
             $table->foreignIdFor(\App\Models\Course::class)->index();
-            $table->string('classroom');
-            $table->string('semester');
-            $table->year('year');
             $table->timestamps();
         });
     }
